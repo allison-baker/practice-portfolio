@@ -7,6 +7,10 @@
     --medium-green: #505E3F;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -66,6 +70,7 @@ h1 {
     color: var(--my-white);
     font-style: italic;
     margin: 0;
+    font-size: 1.6rem;
 }
 
 /* My projects */
@@ -116,4 +121,16 @@ footer {
     text-align: center;
     padding: 1rem;
     font-size: 0.8rem;
+}
+
+@media (max-width: 67rem) {
+    html {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 55rem) {
+    html {
+        font-size: 0.7rem;
+    }
 }
