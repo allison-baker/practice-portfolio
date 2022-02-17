@@ -75,17 +75,45 @@ h1 {
 
 /* My projects */
 #projects {
-    display: flex;
     background-color: var(--light-brown);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#projects h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--my-black);
+}
+
+#project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
     justify-content: space-evenly;
 }
 
 .project-tile {
-    background-color: var(--medium-green);
+    text-decoration: none;
+    margin: 2rem 0;
+}
+
+.project-tile img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.project-tile figcaption {
     text-align: center;
-    margin: 1.5rem 0;
     color: var(--my-white);
+    background-color: var(--medium-green);
     padding: 2rem;
+    position: relative;
+    top: -0.25rem;
 }
 
 /* Contact Me */
@@ -94,6 +122,8 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 50vh;
 }
 
 #contact h2 {
@@ -109,7 +139,7 @@ h1 {
 
 #contact-info a {
     display: block;
-    padding: 2rem;
+    padding: 4rem;
     text-decoration: none;
     color: var(--my-white);
 }
