@@ -3,8 +3,8 @@
     --my-black: #171517;
     --my-white: #F2F4F3;
     --dark-purple: #3B2234;
-    --light-brown: #A89A7D;
-    --medium-green: #505E3F;
+    --light-green: #56745c;
+    --dark-green: #304134;
 }
 
 html {
@@ -18,6 +18,13 @@ body {
     font-size: 18px;
     font-family: 'Barlow', sans-serif;
     font-weight: 300;
+}
+
+h2 {
+    color: var(--my-white);
+    font-size: 2.25rem;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 500;
 }
 
 /* Nav stuff here */
@@ -46,11 +53,16 @@ nav a {
     font-size: 1.2rem;
 }
 
+nav a:hover {
+    background-color: var(--my-black);
+}
+
 /* Welcome section */
 #welcome-section {
     height: 100vh;
     width: 100%;
     background-color: var(--my-black);
+    background-image: linear-gradient(to bottom right, #383838, var(--my-black));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,7 +79,6 @@ h1 {
 }
 
 #welcome-section h2 {
-    color: var(--my-white);
     font-style: italic;
     margin: 0;
     font-size: 1.6rem;
@@ -75,7 +86,7 @@ h1 {
 
 /* My projects */
 #projects {
-    background-color: var(--light-brown);
+    background-color: var(--light-green);
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -84,8 +95,6 @@ h1 {
 
 #projects h2 {
     text-align: center;
-    font-size: 2rem;
-    color: var(--my-black);
 }
 
 #project-gallery {
@@ -110,15 +119,21 @@ h1 {
 .project-tile figcaption {
     text-align: center;
     color: var(--my-white);
-    background-color: var(--medium-green);
+    background-color: var(--dark-green);
     padding: 2rem;
     position: relative;
     top: -0.25rem;
 }
 
+.project-tile figcaption:hover {
+    background-color: var(--dark-purple);
+    font-size: 1.2rem;
+    transition-duration: 0.3s;
+}
+
 /* Contact Me */
 #contact {
-    background-color: var(--medium-green);
+    background-color: var(--dark-green);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -126,22 +141,24 @@ h1 {
     height: 50vh;
 }
 
-#contact h2 {
-    color: var(--my-white);
-    font-size: 2rem;
-    font-family: 'Source Code Pro', monospace;
-    font-weight: 500;
-}
-
 #contact-info {
     display: flex;
 }
 
 #contact-info a {
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 4rem;
     text-decoration: none;
     color: var(--my-white);
+}
+
+#contact-info i {
+    padding-right: 0.5rem;
+}
+
+#contact-info a:hover {
+    transform: translateY(8px);
 }
 
 /* Footer stuff here */
