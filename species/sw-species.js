@@ -6,14 +6,18 @@ const main = document.querySelector("#main");
 const nav = document.querySelector("#nav");
 const title = document.createElement("h1");
 
-// All species
-const allSpeciesButton = document.createElement("button");
-allSpeciesButton.textContent = "SHOW ALL SPECIES";
-allSpeciesButton.addEventListener("click", function () {
+function showAll() {
   title.textContent = "ALL STAR WARS SPECIES";
   header.appendChild(title);
   speciesGrid(species);
-});
+}
+
+showAll();
+
+// All species
+const allSpeciesButton = document.createElement("button");
+allSpeciesButton.textContent = "SHOW ALL SPECIES";
+allSpeciesButton.addEventListener("click", showAll);
 nav.appendChild(allSpeciesButton);
 
 // Sort by mammals
