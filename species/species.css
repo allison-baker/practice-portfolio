@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+figure {
+    margin: 1rem;
+}
+
+figure img {
+    max-height: 20rem;
+}
+
+figcaption {
+    text-align: center;
+}
