@@ -3,69 +3,70 @@ import { getLastNum, removeChildren } from "../utilities/index.js";
 
 const header = document.querySelector("#header");
 const main = document.querySelector("#main");
+const nav = document.querySelector("#nav");
 const title = document.createElement("h1");
 
 // All species
 const allSpeciesButton = document.createElement("button");
-allSpeciesButton.textContent = "Show All Species";
+allSpeciesButton.textContent = "SHOW ALL SPECIES";
 allSpeciesButton.addEventListener("click", function () {
-  title.textContent = "All StarWars Species";
+  title.textContent = "ALL STAR WARS SPECIES";
   header.appendChild(title);
   speciesGrid(species);
 });
-header.appendChild(allSpeciesButton);
+nav.appendChild(allSpeciesButton);
 
 // Sort by mammals
 const mammalButton = document.createElement("button");
-mammalButton.textContent = "Sort Mammals";
+mammalButton.textContent = "SORT MAMMALS";
 mammalButton.addEventListener("click", function () {
-  title.textContent = "StarWars Mammals";
+  title.textContent = "STAR WARS MAMMALS";
   header.appendChild(title);
   let mammals = species.filter((specie) => specie.classification === "mammal" || specie.classification === "mammals");
   speciesGrid(mammals);
 });
-header.appendChild(mammalButton);
+nav.appendChild(mammalButton);
 
 // Sort by Amphibians
 const amphButton = document.createElement("button");
-amphButton.textContent = "Sort Amphibians";
+amphButton.textContent = "SORT AMPHIBIANS";
 amphButton.addEventListener("click", function () {
-  title.textContent = "StarWars Amphibians";
+  title.textContent = "STAR WARS AMPHIBIANS";
   header.appendChild(title);
   let amphs = species.filter((specie) => specie.classification === "amphibian");
   speciesGrid(amphs);
 });
-header.appendChild(amphButton);
+nav.appendChild(amphButton);
 
 // Sort by Unkown species
 const unknownButton = document.createElement("button");
-unknownButton.textContent = "Sort Unknown";
+unknownButton.textContent = "SORT UNKNOWN";
 unknownButton.addEventListener("click", function () {
-  title.textContent = "StarWars Unknowns";
+  title.textContent = "STAR WARS UNKNOWN SPECIES";
   header.appendChild(title);
   let unknowns = species.filter((specie) => specie.classification === "unknown");
   speciesGrid(unknowns);
 });
-header.appendChild(unknownButton);
+nav.appendChild(unknownButton);
 
 // Sort by reptiles
 const reptileButton = document.createElement("button");
-reptileButton.textContent = "Sort Reptiles";
+reptileButton.textContent = "SORT REPTILIANS";
 reptileButton.addEventListener("click", function () {
-  title.textContent = "StarWars Reptiles";
+  title.textContent = "STAR WARS REPTILIANS";
   header.appendChild(title);
   let reptiles = species.filter(
     (specie) => specie.classification === "reptile" || specie.classification === "reptilian"
   );
   speciesGrid(reptiles);
 });
-header.appendChild(reptileButton);
+nav.appendChild(reptileButton);
 
 // Sort by other species (only 3 other ones)
 const otherButton = document.createElement("button");
-otherButton.textContent = "Sort Other";
+otherButton.textContent = "SORT OTHER";
 otherButton.addEventListener("click", function () {
-  title.textContent = "Other StarWars Species";
+  title.textContent = "OTHER STAR WARS SPECIES";
   header.appendChild(title);
   let others = species.filter(
     (specie) =>
@@ -75,7 +76,7 @@ otherButton.addEventListener("click", function () {
   );
   speciesGrid(others);
 });
-header.appendChild(otherButton);
+nav.appendChild(otherButton);
 
 function speciesGrid(speciesArray) {
   removeChildren(main);
