@@ -841,8 +841,8 @@ export const species = [
     },
     {
         "name": "Rodian",
-        "classification": "sentient",
-        "designation": "reptilian",
+        "classification": "reptilian",
+        "designation": "sentient",
         "average_height": "170",
         "skin_colors": "green, blue",
         "hair_colors": "n/a",

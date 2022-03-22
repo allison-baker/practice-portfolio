@@ -20,3 +20,12 @@ figure img {
 figcaption {
     text-align: center;
 }
+
+button {
+    width: 10rem;
+    height: 3rem;
+    margin: 1rem;
+    background-color: maroon;
+    color: white;
+    font-size: large;
+}

@@ -1,15 +1,10 @@
 import { films } from '../data/films.js';
-
-function getLastNumber(url) {
-    return url[url.length - 2];
-}
+import { getLastNum } from '../utilities/index.js';
 
 let filmsList = document.querySelector('#filmsList');
 
-console.log(films[0]);
-
 for (let i=0; i < films.length; i++) {
-    let filmNum = getLastNumber(films[i].url);
+    let filmNum = getLastNum(films[i].url);
 
     let newFigure = document.createElement('figure');
     let newImage = document.createElement('img');
