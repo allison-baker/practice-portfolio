@@ -1,8 +1,6 @@
 import { starships } from "../data/starships.js";
 import { getLastNum, removeChildren } from "../utilities/index.js";
 
-const main = document.querySelector("#main");
-const nav = document.querySelector("#nav");
 const navList = document.querySelector("#navList");
 const shipViewer = document.querySelector("#shipViewer");
 const modal = document.querySelector(".modal");
@@ -30,8 +28,12 @@ populateNav();
 function populateShipView(shipData) {
     removeChildren(shipViewer);
 
-    let shipNum = getLastNum(shipData.url);
+    const shipFig = document.createElement('figure');
+    const shipCap = document.createElement('figcaption');
+    const shipNum = getLastNum(shipData.url);
     const shipImg = document.createElement('img');
+
+    shipCap.textContent = shipData.model;
     shipImg.src = `https://starwars-visualguide.com/assets/img/starships/${shipNum}.jpg`;
 
     shipImg.addEventListener('error', () => {
@@ -39,5 +41,7 @@ function populateShipView(shipData) {
         modal.classList.toggle("is-active");
     })
 
-    shipViewer.appendChild(shipImg);
+    shipFig.appendChild(shipImg);
+    shipFig.appendChild(shipCap);
+    shipViewer.appendChild(shipFig);
 }
