@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+:root {
+    --beige: #C4C6B8;
+    --dark-gray: #373737;
+    --blue: #71989D;
+    --black: #1B1110;
+    --brown: #70513D;
+}
+
 @font-face {
     font-family:"STARWARS";
     src:url("../data/STARWARS.eot") format("eot"),url("../data/STARWARS.woff") format("woff"),url("../data/STARWARS.ttf") format("truetype"),url("../data/STARWARS.svg#STARWARS") format("svg");
@@ -12,7 +20,7 @@
 }
 
 body {
-    background-color: #373737;
+    background-color: var(--dark-gray);
     font-family: 'Share Tech Mono', monospace;
 }
 
@@ -25,7 +33,7 @@ main {
 }
 
 h1 {
-    color: #71989D;
+    color: var(--blue);
     text-align: center;
     margin: 2rem 0 1rem 0;
     font-family: "STARWARS", sans-serif;
@@ -34,7 +42,7 @@ h1 {
 figure {
     margin: 1rem 0;
     padding: 1rem;
-    background-color: #1B1110;
+    background-color: var(--black);
 }
 
 figure img {
@@ -43,7 +51,7 @@ figure img {
 
 figcaption {
     text-align: center;
-    color: #C4C6B8;
+    color: var(--beige);
     font-size: large;
     padding-top: 0.5rem;
 }
