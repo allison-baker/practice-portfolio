@@ -32,6 +32,14 @@ h1 {
     font-family: "STARWARS", sans-serif;
 }
 
+main {
+    display: flex;
+}
+
+nav {
+    min-width: 16rem;
+}
+
 ul {
     margin: 1rem;
 }

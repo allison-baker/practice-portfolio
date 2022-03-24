@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Al Baker" />
     <meta name="description" content="View and sort data on starships in Star Wars." />
-    <link href="starships.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link href="starships.css" rel="stylesheet" type="text/css" />
     <title>Star Wars Starships</title>
   </head>
   <body>
@@ -20,8 +21,17 @@
       <nav id="nav">
         <ul id="navList"></ul>
       </nav>
+      <section id="shipViewer"></section>
     </main>
-    <section id="shipViewer"></section>
+    <div class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <p class="image is-4by3">
+          <img src="https://starwars-visualguide.com/assets/img/big-placeholder.jpg" alt="image not found photo">
+        </p>
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
     <script src="./sw-starships.js" type="module"></script>
   </body>
 </html>
