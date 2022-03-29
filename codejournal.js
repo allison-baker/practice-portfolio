@@ -154,3 +154,6 @@ const filmPlusMore = filmURLs.map(filmURL => {
 
 // map creates a new array of just the names of the pilots from the original array
 const pilotNames = filmURLs.map(filmURL => filmURL.name)
+
+// Ternary Operator Syntax
+// condition ? exprIfTrue : exprIfFalse
