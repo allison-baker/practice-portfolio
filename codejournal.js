@@ -97,3 +97,60 @@ function myFunction() { // this is a named function definition
 function sumTwoThings(thing1, thing2) {
     return thing1 + thing2;
 }
+
+// Filtering Arrays
+
+const pilots = [
+    {
+        id: 2,
+        name: "Wedge Antilles",
+        faction: "Rebels"
+    },
+    {
+        id: 8,
+        name: "Cienna Ree",
+        faction: "Empire"
+    },
+    {
+        id: 40,
+        name: "Iden Versio",
+        faction: "Empire"
+    },
+    {
+        id: 66,
+        name: "Thane Kyrell",
+        faction: "Rebels"
+    }
+]
+
+// Two different ways to format a filter function for an array
+const rebels = pilots.filter(pilot => pilot.faction === "Rebels"); // implicit return
+const empire = pilots.filter((pilot) => { // optional parentheses on the parameter that's passed in
+    return pilot.faction === "Empire";
+})
+
+// Map Function
+
+let filmURLs = [
+    "https://swapi.co/api/films/",
+    "https://swapi.co/api/films/5/",
+    "https://swapi.co/api/films/4/this one is longer...even longer",
+    "https://swapi.co/api/films/6/",
+    "https: ",
+    "https://swapi.co/api/films/1/"
+]
+
+// map assigns a new array of the lengths of the items in the filmURLs array
+const filmLengths = filmURLs.map(filmURL => filmURL.length)
+
+// map creates a new array of objects using data from the original array
+const filmPlusMore = filmURLs.map(filmURL => {
+    let filmObj = {
+        url: filmURL,
+        createdDate: Date.now(),
+    }
+    return filmObj
+})
+
+// map creates a new array of just the names of the pilots from the original array
+const pilotNames = filmURLs.map(filmURL => filmURL.name)
