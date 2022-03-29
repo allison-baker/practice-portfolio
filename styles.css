@@ -87,7 +87,8 @@ h1 {
 /* My projects */
 #projects {
     background-color: var(--light-green);
-    height: 100vh;
+    min-height: 100vh;
+    padding: 3rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;

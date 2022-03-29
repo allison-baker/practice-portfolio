@@ -35,7 +35,7 @@ body {
 
 .mainContainer {
     display: flex;
-    padding: 1.75rem;
+    padding: 1.75rem 4rem;
 }
 
 .navigation {
@@ -51,8 +51,11 @@ body {
     text-decoration: none;
 }
 
+#shipViewer {
+    margin: 0 auto !important;
+}
+
 #shipViewer figure {
-    margin-left: 3rem !important;
     padding: 2rem;
     background-color: var(--black);
 }
