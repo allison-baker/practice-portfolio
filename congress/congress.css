@@ -3,3 +3,51 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root {
+    --usa-red: #BF0A30;
+    --usa-blue: #002868;
+}
+
+body {
+    font-family: 'Public Sans', sans-serif;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+main {
+    max-width: 70rem;
+    margin: 0 auto
+}
+
+p {
+    margin: 1rem;
+}
+
+ul {
+    list-style-type: none;
+    margin: 1rem 0 1rem 3rem;
+}
+
+#senatorGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#senatorGrid figure {
+    background-color: var(--usa-blue);
+    padding: 1rem;
+    margin: 1rem;
+}
+
+#senatorGrid figcaption {
+    color: white;
+    text-align: center;
+    padding-top: 0.75rem;
+    font-weight: 200;
+}

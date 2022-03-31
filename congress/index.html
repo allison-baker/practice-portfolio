@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="A page displaying members of Congress." />
     <meta name="author" content="Al Baker" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@200;700&display=swap" rel="stylesheet" />
     <link href="congress.css" rel="stylesheet" type="text/css" />
     <title>Members of Congress</title>
   </head>
   <body>
     <header>
-      <h1>Members of Congress Page</h1>
+      <h1>Members of the Senate</h1>
     </header>
     <main>
+      <p id="mostSenior"></p>
+      <p>The members of the Senate with 100% voting loyalty to their parties are:</p>
+      <ul id="mostLoyal"></ul>
       <div id="senatorGrid"></div>
     </main>
     <footer>

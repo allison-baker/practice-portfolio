@@ -157,3 +157,35 @@ const pilotNames = filmURLs.map(filmURL => filmURL.name)
 
 // Ternary Operator Syntax
 // condition ? exprIfTrue : exprIfFalse
+
+// Reduce Function
+
+const swPilots = [
+    {
+        id: 10,
+        name: "Poe Dameron",
+        years: 14
+    },
+    {
+        id: 2,
+        name: "Temmin 'Snap' Wexley",
+        years: 30
+    },
+    {
+        id: 41,
+        name: "Talissan Lintra",
+        years: 16
+    },
+    {
+        id: 99,
+        name: "Ello Asty",
+        years: 22
+    }
+]
+
+const totalYears = swPilots.reduce((acc, pilot) => acc + pilot.years, 0) // should be 82
+//                                 (prev, curr) => prev + curr, initial value
+
+const mostExpPilot = swPilots.reduce((oldest, pilot) => {
+    return oldest.years > pilot.years ? oldest : pilot
+})
