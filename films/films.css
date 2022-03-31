@@ -55,3 +55,12 @@ figcaption {
     font-size: large;
     padding-top: 0.5rem;
 }
+
+footer {
+    padding: 1.5rem;
+    margin-top: 1rem;
+    text-align: center;
+    background-color: var(--black);
+    color: var(--beige);
+    font-size: 0.8rem;
+}
