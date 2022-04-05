@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pokemon-yellow: #FFCB05;
+    --pokemon-lblue: #3D7DCA;
+    --pokemon-dblue: #003A70;
+}
+
+h1 {
+    color: var(--pokemon-dblue);
+}
