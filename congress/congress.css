@@ -33,19 +33,19 @@ ul {
     margin: 1rem 0 1rem 3rem;
 }
 
-#senatorGrid {
+#congressGrid {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-#senatorGrid figure {
+#congressGrid figure {
     background-color: var(--usa-blue);
     padding: 1rem;
     margin: 1rem;
 }
 
-#senatorGrid figcaption {
+#congressGrid figcaption {
     color: white;
     text-align: center;
     padding-top: 0.75rem;
