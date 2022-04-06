@@ -11,6 +11,16 @@
 
 body {
     font-family: 'Public Sans', sans-serif;
+    background-color: #f1f1f1;
+}
+
+/* Header styling */
+header {
+    background-color: var(--usa-red);
+    color: white;
+    padding: 1.5rem;
+    max-width: 70rem;
+    margin: 0 auto;
 }
 
 h1 {
@@ -19,13 +29,37 @@ h1 {
     text-align: center;
 }
 
+/* Navigation styling */
+#nav {
+   padding: 1rem 2rem; 
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+}
+
+#nav button {
+    border: none;
+    padding: 0.8rem;
+    width: 20rem;
+    border-radius: 1rem;
+    margin: 0.5rem 0;
+    background-color: var(--usa-blue);
+    color: white;
+}
+
+/* Main styling */
 main {
     max-width: 70rem;
-    margin: 0 auto
+    margin: 0 auto;
+    background-color: white;
+}
+
+h2 {
+    padding: 1rem 2rem;
 }
 
 p {
-    margin: 1rem;
+    padding: 0.5rem 2rem;
 }
 
 ul {
@@ -36,7 +70,7 @@ ul {
 #congressGrid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 #congressGrid figure {
@@ -50,4 +84,15 @@ ul {
     text-align: center;
     padding-top: 0.75rem;
     font-weight: 200;
+}
+
+/* Footer styling */
+footer {
+    background-color: var(--usa-red);
+    color: white;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    max-width: 70rem;
+    margin: 0 auto;
 }
