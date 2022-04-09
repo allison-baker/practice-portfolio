@@ -1,6 +1,6 @@
-const pokeGrid = document.querySelector('#pokeGrid');
+import { getLastNum } from "../utilities/index.js";
 
-let baseURL = "https://pokeapi.co/api/v2/pokemon";
+const pokeGrid = document.querySelector('#pokeGrid');
 
 const getAPIData = async (url) => {
     try {
@@ -12,7 +12,7 @@ const getAPIData = async (url) => {
 }
 
 async function loadPokemon() {
-    let url = baseURL + "?limit=100&offset=0";
+    let url = "https://pokeapi.co/api/v2/pokemon?limit=50&offset=0";
     console.log(url);
     const pokeData = await getAPIData(url);
     populateGrid(pokeData.results);
@@ -41,10 +41,11 @@ function populateCardFront(pokemon) {
     pokeFront.className = 'cardFace';
 
     const pokeImg = document.createElement('img');
-    pokeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/143.png`;
+    const pokeNum = getLastNum(pokemon.url);
+    pokeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeNum}.png`;
     
     const pokeCap = document.createElement('figcaption');
-    pokeCap.textContent = 'Snorlax';
+    pokeCap.textContent = pokemon.name.toUpperCase();
 
     pokeFront.appendChild(pokeImg);
     pokeFront.appendChild(pokeCap);
