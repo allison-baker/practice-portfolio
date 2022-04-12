@@ -11,17 +11,12 @@ const getAPIData = async (url) => {
     }
 }
 
-async function loadPokemon() {
-    let url = "https://pokeapi.co/api/v2/pokemon?limit=50&offset=0";
-    console.log(url);
-    const pokeData = await getAPIData(url);
-    populateGrid(pokeData.results);
-}
-
-function populateGrid(pokemonArr) {
-    pokemonArr.forEach((pokemon) => {
+async function loadPokemon(offset = 0, limit = 25) {
+    const data = await getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+    for (const pokeData of data.results) {
+        const pokemon = await getAPIData(pokeData.url);
         createCard(pokemon);
-    });
+    }
 }
 
 function createCard(pokemon) {
@@ -32,17 +27,17 @@ function createCard(pokemon) {
     pokeCard.addEventListener('click', () => pokeCard.classList.toggle('is-flipped'));
 
     pokeCard.appendChild(populateCardFront(pokemon));
+    pokeCard.appendChild(populateCardBack(pokemon));
     pokeScene.appendChild(pokeCard);
     pokeGrid.appendChild(pokeScene);
 }
 
 function populateCardFront(pokemon) {
     const pokeFront = document.createElement('figure');
-    pokeFront.className = 'cardFace';
+    pokeFront.className = 'cardFace front';
 
     const pokeImg = document.createElement('img');
-    const pokeNum = getLastNum(pokemon.url);
-    pokeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokeNum}.png`;
+    pokeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
     
     const pokeCap = document.createElement('figcaption');
     pokeCap.textContent = pokemon.name.toUpperCase();
@@ -50,6 +45,16 @@ function populateCardFront(pokemon) {
     pokeFront.appendChild(pokeImg);
     pokeFront.appendChild(pokeCap);
     return pokeFront;
+}
+
+function populateCardBack(pokemon) {
+    const pokeBack = document.createElement('div');
+    pokeBack.className = "cardFace back";
+    const label = document.createElement('h4');
+    label.textContent = 'Abilities';
+    pokeBack.appendChild(label);
+
+    return pokeBack;
 }
 
 loadPokemon();

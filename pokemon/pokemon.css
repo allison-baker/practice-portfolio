@@ -14,3 +14,53 @@ h1 {
     color: var(--pokemon-dblue);
 }
 
+#pokeGrid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.scene {
+    width: 200px;
+    height: 200px;
+    margin: 2rem;
+    perspective: 600px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.cardFace {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.front {
+    background-color: var(--pokemon-yellow);
+}
+
+.back {
+    background-color: var(--pokemon-lblue);
+    transform: rotateY(180deg);
+}
+
+figure img {
+    width: 200px;
+    height: auto;
+}
+
+figure figcaption {
+    text-align: center;
+}
