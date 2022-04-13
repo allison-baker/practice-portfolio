@@ -1,10 +1,10 @@
 /* My color variables */
 :root {
-    --my-black: #171517;
-    --my-white: #F2F4F3;
-    --dark-purple: #3B2234;
-    --light-green: #56745c;
-    --dark-green: #304134;
+    --my-white: #FFF7F4;
+    --light-orange: #b41e00;
+    --dark-orange: #791400;
+    --light-blue: #184765;
+    --dark-blue: #00121e;
 }
 
 html {
@@ -33,7 +33,7 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: var(--dark-purple);
+    background-color: var(--dark-blue);
     z-index: 10;
 }
 
@@ -54,26 +54,37 @@ nav a {
 }
 
 nav a:hover {
-    background-color: var(--my-black);
+    background-color: var(--dark-orange);
 }
 
 /* Welcome section */
 #welcome-section {
     height: 100vh;
     width: 100%;
-    background-color: var(--my-black);
-    background-image: linear-gradient(to bottom right, #383838, var(--my-black));
+    background-color: var(--light-blue);
+    background-image: linear-gradient(to bottom right, var(--light-blue), var(--dark-blue));
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 
-h1 {
+#welcome-section img {
+    width: 400px;
+    height: auto;
+    border-radius: 25rem;
+}
+
+#welcome-section div {
+    max-width: 50rem;
+}
+
+#welcome-section h1 {
     color: var(--my-white);
     font-size: 4.5rem;
     text-transform: uppercase;
     margin-bottom: 2rem;
+    margin-top: 0;
     font-family: 'Source Code Pro', monospace;
     font-weight: 500;
 }
@@ -86,7 +97,8 @@ h1 {
 
 /* My projects */
 #projects {
-    background-color: var(--light-green);
+    background-color: var(--dark-blue);
+    background-image: linear-gradient(to bottom left, var(--dark-blue), var(--light-blue));
     min-height: 100vh;
     padding: 3rem 0;
     display: flex;
@@ -120,26 +132,27 @@ h1 {
 .project-tile figcaption {
     text-align: center;
     color: var(--my-white);
-    background-color: var(--dark-green);
+    background-color: var(--light-orange);
     padding: 2rem;
     position: relative;
     top: -0.25rem;
 }
 
 .project-tile figcaption:hover {
-    background-color: var(--dark-purple);
+    background-color: var(--dark-orange);
     font-size: 1.2rem;
     transition-duration: 0.3s;
 }
 
 /* Contact Me */
 #contact {
-    background-color: var(--dark-green);
+    background-color: var(--light-blue);
+    background-image: linear-gradient(to bottom right, var(--light-blue), var(--dark-blue));
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 50vh;
+    height: 80vh;
 }
 
 #contact-info {
@@ -164,11 +177,26 @@ h1 {
 
 /* Footer stuff here */
 footer {
-    background-color: var(--dark-purple);
+    background-color: var(--dark-blue);
     color: var(--my-white);
     text-align: center;
     padding: 1rem;
     font-size: 0.8rem;
+}
+
+/* Very minimal responsive design */
+@media only screen and (max-width: 800px) {
+    #welcome-section {
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    #contact-info {
+        max-width: 500px;
+        margin: 0 auto;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
 }
 
 @media (max-width: 67rem) {
