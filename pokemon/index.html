@@ -10,10 +10,23 @@
     <title>Pokemon Cards</title>
 </head>
 <body>
-    <header>
+    <header id="header">
         <h1>Pokemon Cards</h1>
     </header>
     <main>
+        <form id="newPokemonForm" method="get">
+            <label for="name">Name*:</label>
+            <input type="text" name="name" id="name" required></br>
+            <label for="height">Height:</label>
+            <input type="number" name="height" id="height"></br>
+            <label for="weight">Weight:</label>
+            <input type="number" name="weight" id="weight"></br>
+            <label for="abilities">Abilities (comma separated list)*:</label>
+            <input type="text" name="abilities" id="abilities" required></br>
+            <label for="type">Types (up to two, separated by a space)*:</label>
+            <input type="type" name="type" id="type" required></br>
+            <input type="submit" value="Create Pokemon!">
+        </form>
         <div id="pokeGrid"></div>
     </main>
     <footer></footer>

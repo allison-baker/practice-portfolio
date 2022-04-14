@@ -22,7 +22,7 @@ h1 {
 
 .scene {
     width: 200px;
-    height: 200px;
+    height: 260px;
     margin: 2rem;
     perspective: 600px;
 }
