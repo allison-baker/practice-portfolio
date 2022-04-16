@@ -10,11 +10,70 @@
     --pokemon-dblue: #003A70;
 }
 
+@font-face {
+    font-family: "Pokemon";
+    src: url("../fonts/Pokemon.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+header {
+    background-color: var(--pokemon-dblue);
+}
+
 h1 {
-    color: var(--pokemon-dblue);
+    font-family: 'Pokemon', sans-serif;
+    letter-spacing: 0.3rem;
+    font-size: 2.5rem;
+    color: var(--pokemon-yellow);
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.form-box {
+    background-color: var(--pokemon-lblue);
+}
+
+#newPokemonForm {
+    padding: 1rem 2vw;
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
+#newPokemonForm input {
+    padding: 0.3rem;
+    margin: 0.5rem;
+}
+
+#newPokemonForm label {
+    color: white;
+}
+
+#newPokemonForm #abilities {
+    width: 31.4rem;
+}
+
+#newPokemonForm #type {
+    width: 28.35rem;
+}
+
+#newPokemonForm [type = submit] {
+    width: 20rem;
+    padding: 0.5rem;
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: var(--pokemon-dblue);
+    border: none;
+    color: white;
+    margin-left: 28%;
 }
 
 #pokeGrid {
+    width: 80rem;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -52,8 +111,18 @@ h1 {
 }
 
 .back {
-    background-color: var(--pokemon-lblue);
+    background-color: var(--pokemon-dblue);
+    color: white;
     transform: rotateY(180deg);
+}
+
+.back h4 {
+    padding: 0.5rem;
+}
+
+.back ul {
+    list-style-type: none;
+    padding: 0.5rem;
 }
 
 figure img {
@@ -63,4 +132,6 @@ figure img {
 
 figure figcaption {
     text-align: center;
+    color: var(--pokemon-dblue);
+    margin-top: 0.5rem;
 }
