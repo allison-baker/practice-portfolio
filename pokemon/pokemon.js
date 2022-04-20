@@ -32,6 +32,8 @@ async function loadPokemon(offset = 0, limit = 25) {
   }
 }
 
+console.log(loadedPokemon[0]);
+
 // Create Pokemon cards
 function populatePokeCard(pokemon) {
   const pokeScene = document.createElement("div");
@@ -120,9 +122,9 @@ function populateCardBack(pokemon) {
 
   const abilityList = document.createElement("ul");
   pokemon.abilities.forEach((abilityItem) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = abilityItem.ability.name;
-    abilityList.appendChild(listItem);
+    const abilityListItem = document.createElement("li");
+    abilityListItem.textContent = abilityItem.ability.name;
+    abilityList.appendChild(abilityListItem);
   });
   pokeBack.appendChild(abilityList);
 
@@ -135,6 +137,18 @@ function populateCardBack(pokemon) {
   pokeBack.style.setProperty("background-color", getColor(pokeType));
   typeText.textContent = pokeType;
   pokeBack.appendChild(typeText);
+
+  const movesLabel = document.createElement("h4");
+  movesLabel.textContent = "Moves";
+  pokeBack.appendChild(movesLabel);
+
+  const movesList = document.createElement("ul");
+  pokemon.moves.forEach((movesItem) => {
+    const movesListItem = document.createElement("li");
+    movesListItem.textContent = movesItem.move.name;
+    movesList.appendChild(movesListItem);
+  });
+  pokeBack.appendChild(movesList);
 
   return pokeBack;
 }

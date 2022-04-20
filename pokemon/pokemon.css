@@ -120,16 +120,19 @@ h1 {
 }
 
 .back h4 {
-    padding: 0.5rem;
+    padding-top: 0.5rem;
+    padding-left: 0.5rem;
 }
 
 .back ul {
     list-style-type: none;
-    padding: 0.5rem;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
 }
 
 .back p {
-    padding: 0.5rem;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
 }
 
 figure img {
