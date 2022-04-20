@@ -12,46 +12,27 @@ const getAPIData = async (url) => {
   }
 };
 
-// Create Pokemon cards
-function populateCardFront(pokemon) {
-  const pokeFront = document.createElement("figure");
-  pokeFront.className = "cardFace front";
+const loadedPokemon = [];
 
-  const pokeImg = document.createElement("img");
-  if (pokemon.id === 0) {
-    pokeImg.src = '../images/pokeball.png';
-  } else {
-    pokeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
+async function loadPokemon(offset = 0, limit = 25) {
+  const data = await getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
+  for (const pokeData of data.results) {
+    const pokemon = await getAPIData(pokeData.url);
+    const simplifiedPokemon = {
+      id: pokemon.id,
+      height: pokemon.height,
+      weight: pokemon.weight,
+      name: pokemon.name,
+      types: pokemon.types,
+      abilities: pokemon.abilities,
+      moves: pokemon.moves.slice(0, 3),
+    };
+    loadedPokemon.push(simplifiedPokemon);
+    populatePokeCard(simplifiedPokemon);
   }
-  
-  const pokeCap = document.createElement("figcaption");
-  pokeCap.textContent = pokemon.name.toUpperCase();
-  //pokeCap.style.setProperty('background-color', getColor)
-
-  pokeFront.appendChild(pokeImg);
-  pokeFront.appendChild(pokeCap);
-  return pokeFront;
 }
 
-function populateCardBack(pokemon) {
-  const pokeBack = document.createElement("div");
-  pokeBack.className = "cardFace back";
-
-  const label = document.createElement("h4");
-  label.textContent = "Abilities";
-  pokeBack.appendChild(label);
-
-  const abilityList = document.createElement("ul");
-  pokemon.abilities.forEach((abilityItem) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = abilityItem.ability.name;
-    abilityList.appendChild(listItem);
-  });
-  pokeBack.appendChild(abilityList);
-
-  return pokeBack;
-}
-
+// Create Pokemon cards
 function populatePokeCard(pokemon) {
   const pokeScene = document.createElement("div");
   pokeScene.className = "scene";
@@ -63,6 +44,99 @@ function populatePokeCard(pokemon) {
   pokeCard.appendChild(populateCardBack(pokemon));
   pokeScene.appendChild(pokeCard);
   pokeGrid.appendChild(pokeScene);
+}
+
+function getColor(pokeType) {
+  let color;
+  //if(pokeType === "grass") color = '#00FF00'
+  switch (pokeType) {
+    case "grass":
+      color = "#006A33";
+      break;
+    case "fire":
+      color = "#9B2226";
+      break;
+    case "water":
+      color = "#005F73";
+      break;
+    case "bug":
+      color = "#CA6702";
+      break;
+    case "normal":
+      color = "#001219";
+      break;
+    case "flying":
+      color = "#00FFFF";
+      break;
+    case "poison":
+      color = "#758A0A";
+      break;
+    case "electric":
+      color = "#EE9B00";
+      break;
+    case "psychic":
+      color = "#8C3554";
+      break;
+    case "ground":
+      color = "#5B3605";
+      break;
+    case "fairy":
+      color = "#5B2051";
+      break;
+    default:
+      color = "#5A5A5A";
+  }
+  return color;
+}
+
+function populateCardFront(pokemon) {
+  const pokeFront = document.createElement("figure");
+  pokeFront.className = "cardFace front";
+
+  const pokeImg = document.createElement("img");
+  if (pokemon.id === 0) {
+    pokeImg.src = "../images/pokeball.png";
+  } else {
+    pokeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
+  }
+
+  const pokeCap = document.createElement("figcaption");
+  pokeCap.textContent = pokemon.name.toUpperCase();
+  const pokeType = pokemon.types[0].type.name;
+  pokeCap.style.setProperty("background-color", getColor(pokeType));
+
+  pokeFront.appendChild(pokeImg);
+  pokeFront.appendChild(pokeCap);
+  return pokeFront;
+}
+
+function populateCardBack(pokemon) {
+  const pokeBack = document.createElement("div");
+  pokeBack.className = "cardFace back";
+
+  const abilitiesLabel = document.createElement("h4");
+  abilitiesLabel.textContent = "Abilities";
+  pokeBack.appendChild(abilitiesLabel);
+
+  const abilityList = document.createElement("ul");
+  pokemon.abilities.forEach((abilityItem) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = abilityItem.ability.name;
+    abilityList.appendChild(listItem);
+  });
+  pokeBack.appendChild(abilityList);
+
+  const typeLabel = document.createElement("h4");
+  typeLabel.textContent = "Primary Type";
+  pokeBack.appendChild(typeLabel);
+
+  const typeText = document.createElement("p");
+  const pokeType = pokemon.types[0].type.name;
+  pokeBack.style.setProperty("background-color", getColor(pokeType));
+  typeText.textContent = pokeType;
+  pokeBack.appendChild(typeText);
+
+  return pokeBack;
 }
 
 // Create new Pokemon
@@ -85,12 +159,10 @@ function makeAbilitiesArray(commaString) {
   });
 }
 
-function makeTypesArray(spacedString) {
-  return spacedString.split(" ").map((typeName) => {
-    return {
-      type: { name: typeName },
-    };
-  });
+function makeTypesArray(string) {
+  return [
+    {type: { name: string },}
+  ];
 }
 
 form.addEventListener("submit", (event) => {
@@ -113,27 +185,16 @@ form.addEventListener("submit", (event) => {
   console.log(newPokemon);
   populatePokeCard(newPokemon);
 
-  for (let i=0; i < form.elements.length-1; i++) {
-    form.elements[i].value = '';
+  for (let i = 0; i < form.elements.length - 1; i++) {
+    form.elements[i].value = "";
   }
 });
 
 // Load page
-async function loadPokemon(offset = 0, limit = 25) {
-  const data = await getAPIData(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
-  for (const pokeData of data.results) {
-    const pokemon = await getAPIData(pokeData.url);
-    const simplifiedPokemon = {
-      id: pokemon.id,
-      height: pokemon.height,
-      weight: pokemon.weight,
-      name: pokemon.name,
-      types: pokemon.types,
-      abilities: pokemon.abilities,
-      moves: pokemon.moves.slice(0, 3)
-    }
-    populatePokeCard(simplifiedPokemon);
-  }
-}
+await loadPokemon(0, 50);
 
-await loadPokemon();
+function getPokemonByType(type) {
+  return loadedPokemon.filter((pokemon) => pokemon.types[0].type.name === type)
+}
+// now figure out how to display this count in the UI
+console.log(getPokemonByType('poison'));

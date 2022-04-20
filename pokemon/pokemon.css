@@ -58,7 +58,10 @@ h1 {
 }
 
 #newPokemonForm #type {
-    width: 28.35rem;
+    width: 36.2rem;
+    padding: 0.3rem;
+    margin: 0.5rem;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 #newPokemonForm [type = submit] {
@@ -125,6 +128,10 @@ h1 {
     padding: 0.5rem;
 }
 
+.back p {
+    padding: 0.5rem;
+}
+
 figure img {
     width: 200px;
     height: auto;
@@ -132,6 +139,7 @@ figure img {
 
 figure figcaption {
     text-align: center;
-    color: var(--pokemon-dblue);
+    color: white;
     margin-top: 0.5rem;
+    padding: 0.9rem;
 }

@@ -27,8 +27,22 @@
                 <input type="number" name="weight" id="weight" /></br>
                 <label for="abilities">Abilities (comma separated list)*:</label>
                 <input type="text" name="abilities" id="abilities" required /></br>
-                <label for="type">Types (up to two, separated by a space)*:</label>
-                <input type="type" name="type" id="type" required /></br>
+                <label for="type">Select Primary Type*:</label>
+                <select name="type" id="type">
+                  <option value="select">Select</option>
+                  <option value="grass">Grass</option>
+                  <option value="fire">Fire</option>
+                  <option value="water">Water</option>
+                  <option value="bug">Bug</option>
+                  <option value="normal">Normal</option>
+                  <option value="flying">Flying</option>
+                  <option value="poison">Poison</option>
+                  <option value="electric">Electric</option>
+                  <option value="psychic">Psychic</option>
+                  <option value="ground">Ground</option>
+                  <option value="fairy">Fairy</option>
+                  <option value="other">Other</option>
+                </select>
                 <input type="submit" value="Create Pokemon!" />
             </form>
         </div>
