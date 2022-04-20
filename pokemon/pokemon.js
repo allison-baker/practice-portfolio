@@ -1,6 +1,7 @@
 // Select document elements
 const pokeGrid = document.querySelector("#pokeGrid");
-const form = document.querySelector("#newPokemonForm");
+const newPokemon = document.querySelector("#formBox");
+//const form = document.querySelector("#newPokemonForm");
 
 // Make API call and get data
 const getAPIData = async (url) => {
@@ -155,12 +156,13 @@ function populateCardBack(pokemon) {
 
 // Create new Pokemon
 class Pokemon {
-  constructor(name, height, weight, abilities, types) {
+  constructor(name, height, weight, abilities, types, moves) {
     this.name = name;
     this.height = height;
     this.weight = weight;
     this.abilities = abilities;
     this.types = types;
+    this.moves = moves;
     this.id = 0;
   }
 }
@@ -173,13 +175,58 @@ function makeAbilitiesArray(commaString) {
   });
 }
 
-function makeTypesArray(string) {
-  return [
-    {type: { name: string },}
-  ];
+function makeTypesArray(spacedString) {
+  return spacedString.split(" ").map((typeName) => {
+    return {
+      type: { name: typeName },
+    };
+  });
 }
 
-form.addEventListener("submit", (event) => {
+function makeMovesArray(commaString) {
+  return commaString.split(",").map((movesName) => {
+    return {
+      move: { name: movesName },
+    };
+  });
+}
+
+const buttonLabel = document.createElement("h3");
+buttonLabel.textContent = "Add Your Pokemon to the Grid!";
+newPokemon.appendChild(buttonLabel);
+
+const newButton = document.createElement('button');
+newButton.textContent = 'New Pokemon';
+newPokemon.appendChild(newButton);
+
+newButton.addEventListener('click', () => {
+  const pokeName = prompt('What is the name of your new Pokemon?', 'Alemon');
+  const pokeHeight = prompt("What is the Pokemon's height?", 10);
+  const pokeWeight = prompt("What is the Pokemon's weight?", 750);
+  const pokeAbilities = prompt(
+    "What are your Pokemon's abilities? (use a comma-separated list)",
+  );
+  const pokeTypes = prompt(
+    "What are your Pokemon's types? (up to 2 types separated by a space)",
+  );
+  const pokeMoves = prompt(
+    "What are your Pokemon's three favorite moves? (use a comma-separated list)"
+  );
+
+  const newPokemon = new Pokemon(
+    pokeName,
+    pokeHeight,
+    pokeWeight,
+    makeAbilitiesArray(pokeAbilities),
+    makeTypesArray(pokeTypes),
+    makeMovesArray(pokeMoves),
+  );
+
+  console.log(newPokemon);
+  populatePokeCard(newPokemon);
+});
+
+/*form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const pokeName = form.elements["name"].value;
@@ -202,7 +249,7 @@ form.addEventListener("submit", (event) => {
   for (let i = 0; i < form.elements.length - 1; i++) {
     form.elements[i].value = "";
   }
-});
+});*/
 
 // Load page
 await loadPokemon(0, 50);

@@ -34,11 +34,30 @@ h1 {
     padding-bottom: 1rem;
 }
 
-.form-box {
+#formBox {
     background-color: var(--pokemon-lblue);
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-#newPokemonForm {
+#formBox h3 {
+    color: white;
+}
+
+#formBox button {
+    border: none;
+    background-color: var(--pokemon-dblue);
+    color: white;
+    font-family: 'Roboto Condensed', sans-serif;
+    padding: 0.8rem;
+    width: 10rem;
+    font-size: 1rem;
+}
+
+/*#newPokemonForm {
     padding: 1rem 2vw;
     max-width: 50rem;
     margin: 0 auto;
@@ -72,7 +91,7 @@ h1 {
     border: none;
     color: white;
     margin-left: 28%;
-}
+}*/
 
 #pokeGrid {
     width: 80rem;
