@@ -33,8 +33,6 @@ async function loadPokemon(offset = 0, limit = 25) {
   }
 }
 
-console.log(loadedPokemon[0]);
-
 // Create Pokemon cards
 function populatePokeCard(pokemon) {
   const pokeScene = document.createElement("div");
@@ -49,47 +47,66 @@ function populatePokeCard(pokemon) {
   pokeGrid.appendChild(pokeScene);
 }
 
+const typeAndColor = [
+  {
+    name: "grass",
+    color: "#758A0A",
+  },
+  {
+    name: "fire",
+    color: "#9B2226",
+  },
+  {
+    name: "water",
+    color: "#17245F"
+  },
+  {
+    name: "bug",
+    color: "#006A33",
+  },
+  {
+    name: "dark",
+    color: "#001219",
+  },
+  {
+    name: "flying",
+    color: "#005F73",
+  },
+  {
+    name: "poison",
+    color: "#5B2051",
+  },
+  {
+    name: "electric",
+    color: "#EE9B00",
+  },
+  {
+    name: "psychic",
+    color: "#8C3554",
+  },
+  {
+    name: "ground",
+    color: "#5B3605",
+  },
+  {
+    name: "fairy",
+    color: "#5F1133",
+  },
+  {
+    name: "normal",
+    color: "#8E727D"
+  },
+]
+
 function getColor(pokeType) {
-  let color;
-  //if(pokeType === "grass") color = '#00FF00'
-  switch (pokeType) {
-    case "grass":
-      color = "#758A0A";
-      break;
-    case "fire":
-      color = "#9B2226";
-      break;
-    case "water":
-      color = "#17245F";
-      break;
-    case "bug":
-      color = "#006A33";
-      break;
-    case "normal":
-      color = "#001219";
-      break;
-    case "flying":
-      color = "#005F73";
-      break;
-    case "poison":
-      color = "#5B2051";
-      break;
-    case "electric":
-      color = "#EE9B00";
-      break;
-    case "psychic":
-      color = "#8C3554";
-      break;
-    case "ground":
-      color = "#5B3605";
-      break;
-    case "fairy":
-      color = "#5F1133";
-      break;
-    default:
-      color = "#5A5A5A";
+  for (let i=0; i<typeAndColor.length; i++) {
+    if (typeAndColor[i].name === pokeType) {
+      return typeAndColor[i].color;
+    }
   }
-  return color;
+
+  // otherwise return default gray
+  return "#5A5A5A";
 }
 
 function populateCardFront(pokemon) {
@@ -257,5 +274,44 @@ await loadPokemon(0, 50);
 function getPokemonByType(type) {
   return loadedPokemon.filter((pokemon) => pokemon.types[0].type.name === type)
 }
-// now figure out how to display this count in the UI
-console.log(getPokemonByType('poison'));
+
+// Table to display stats on pokemon currently in grid
+const pokeTable = document.querySelector("#pokeTable");
+
+function createPokeTable() {
+  const headerRow = document.createElement("tr");
+  const typeTitle = document.createElement("th");
+  const countTitle = document.createElement("th");
+  const colorTitle = document.createElement("th");
+
+  typeTitle.textContent = "Primary Type";
+  countTitle.textContent = "Number Displayed";
+  colorTitle.textContent = "Color Key";
+
+  headerRow.appendChild(typeTitle);
+  headerRow.appendChild(countTitle);
+  headerRow.appendChild(colorTitle);
+  pokeTable.appendChild(headerRow);
+
+  // Loop through type counts and add table rows
+  for (let i=0; i<typeAndColor.length; i++) {
+    let dataRow = document.createElement("tr");
+
+    let typeData = document.createElement("td");
+    let countData = document.createElement("td");
+    let colorData = document.createElement("td");
+    colorData.style.setProperty("background-color", typeAndColor[i].color);
+    colorData.style.setProperty("color", "white");
+
+    typeData.textContent = typeAndColor[i].name;
+    countData.textContent = getPokemonByType(typeAndColor[i].name).length;
+    colorData.textContent = typeAndColor[i].color;
+
+    dataRow.appendChild(typeData);
+    dataRow.appendChild(countData);
+    dataRow.appendChild(colorData);
+    pokeTable.appendChild(dataRow);
+  }
+}
+
+createPokeTable();

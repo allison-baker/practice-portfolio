@@ -122,6 +122,7 @@ h1 {
     height: 100%;
     position: absolute;
     backface-visibility: hidden;
+    border-radius: 10px;
 }
 
 .card.is-flipped {
@@ -149,9 +150,14 @@ h1 {
     padding-left: 1rem;
 }
 
+.back li {
+    text-transform: capitalize;
+}
+
 .back p {
     padding-top: 0.5rem;
     padding-left: 1rem;
+    text-transform: capitalize;
 }
 
 figure img {
@@ -164,6 +170,37 @@ figure figcaption {
     color: white;
     margin-top: 0.5rem;
     padding: 0.9rem;
+    border-radius: 0 0 10px 10px;
+}
+
+h3 {
+    text-align: center;
+}
+
+#pokeTable {
+    width: 60rem;
+    margin: 1rem auto;
+    border-collapse: collapse;
+}
+
+#pokeTable th {
+    background-color: #5A5A5A;
+    color: white;
+    text-align: left;
+    padding: 0.75rem 2vw;
+}
+
+#pokeTable td {
+    padding: 0.5rem 2vw;
+    text-transform: capitalize;
+}
+
+#pokeTable tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+
+#pokeTable tr:hover {
+    background-color: rgba(196, 199, 221, 0.5);
 }
 
 footer {
