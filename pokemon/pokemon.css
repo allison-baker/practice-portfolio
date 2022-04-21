@@ -57,42 +57,6 @@ h1 {
     font-size: 1rem;
 }
 
-/*#newPokemonForm {
-    padding: 1rem 2vw;
-    max-width: 50rem;
-    margin: 0 auto;
-}
-
-#newPokemonForm input {
-    padding: 0.3rem;
-    margin: 0.5rem;
-}
-
-#newPokemonForm label {
-    color: white;
-}
-
-#newPokemonForm #abilities {
-    width: 31.4rem;
-}
-
-#newPokemonForm #type {
-    width: 36.2rem;
-    padding: 0.3rem;
-    margin: 0.5rem;
-    font-family: 'Roboto Condensed', sans-serif;
-}
-
-#newPokemonForm [type = submit] {
-    width: 20rem;
-    padding: 0.5rem;
-    font-family: 'Roboto Condensed', sans-serif;
-    background-color: var(--pokemon-dblue);
-    border: none;
-    color: white;
-    margin-left: 28%;
-}*/
-
 #pokeGrid {
     width: 80rem;
     margin: 0 auto;

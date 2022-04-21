@@ -1,7 +1,6 @@
 // Select document elements
 const pokeGrid = document.querySelector("#pokeGrid");
 const newPokemon = document.querySelector("#formBox");
-//const form = document.querySelector("#newPokemonForm");
 
 // Make API call and get data
 const getAPIData = async (url) => {
@@ -243,33 +242,8 @@ newButton.addEventListener('click', () => {
   populatePokeCard(newPokemon);
 });
 
-/*form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const pokeName = form.elements["name"].value;
-  const pokeHeight = form.elements["height"].value;
-  const pokeWeight = form.elements["weight"].value;
-  const pokeAbilities = form.elements["abilities"].value;
-  const pokeTypes = form.elements["type"].value;
-
-  const newPokemon = new Pokemon(
-    pokeName,
-    pokeHeight,
-    pokeWeight,
-    makeAbilitiesArray(pokeAbilities),
-    makeTypesArray(pokeTypes)
-  );
-
-  console.log(newPokemon);
-  populatePokeCard(newPokemon);
-
-  for (let i = 0; i < form.elements.length - 1; i++) {
-    form.elements[i].value = "";
-  }
-});*/
-
 // Load page
-await loadPokemon(0, 50);
+await loadPokemon(0, 28);
 
 function getPokemonByType(type) {
   return loadedPokemon.filter((pokemon) => pokemon.types[0].type.name === type)
