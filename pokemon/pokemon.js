@@ -54,25 +54,25 @@ function getColor(pokeType) {
   //if(pokeType === "grass") color = '#00FF00'
   switch (pokeType) {
     case "grass":
-      color = "#006A33";
+      color = "#758A0A";
       break;
     case "fire":
       color = "#9B2226";
       break;
     case "water":
-      color = "#005F73";
+      color = "#17245F";
       break;
     case "bug":
-      color = "#CA6702";
+      color = "#006A33";
       break;
     case "normal":
       color = "#001219";
       break;
     case "flying":
-      color = "#00FFFF";
+      color = "#005F73";
       break;
     case "poison":
-      color = "#758A0A";
+      color = "#5B2051";
       break;
     case "electric":
       color = "#EE9B00";
@@ -84,7 +84,7 @@ function getColor(pokeType) {
       color = "#5B3605";
       break;
     case "fairy":
-      color = "#5B2051";
+      color = "#5F1133";
       break;
     default:
       color = "#5A5A5A";
