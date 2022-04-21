@@ -165,3 +165,11 @@ figure figcaption {
     margin-top: 0.5rem;
     padding: 0.9rem;
 }
+
+footer {
+    background-color: var(--pokemon-dblue);
+    color: white;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1.5rem;
+}
