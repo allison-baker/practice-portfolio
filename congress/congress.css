@@ -75,15 +75,20 @@ ul {
 
 #congressGrid figure {
     background-color: var(--usa-blue);
-    padding: 1rem;
     margin: 1rem;
+    border-radius: 15px;
+}
+
+#congressGrid img {
+    border-radius: 15px 15px 0 0;
 }
 
 #congressGrid figcaption {
     color: white;
     text-align: center;
-    padding-top: 0.75rem;
+    padding: 0.75rem;
     font-weight: 200;
+    width: 200px;
 }
 
 /* Footer styling */

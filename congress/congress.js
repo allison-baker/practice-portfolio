@@ -31,7 +31,7 @@ const simpleReps = simplifyMembers(representatives);
 const allMembers = [...simpleSenators, ...simpleReps];
 
 // Function to populate grid with either array
-function populateGrid(congressArr, string) {
+function populateGrid(congressArr) {
   removeChildren(congressGrid);
 
   congressArr.forEach((member) => {
@@ -44,6 +44,14 @@ function populateGrid(congressArr, string) {
 
     memberCap.textContent = `${member.name}, ${member.party}`;
 
+    if (member.party === "R") {
+      memberFig.style.setProperty("background-color", "var(--usa-red)");
+    } else if (member.party === "D") {
+      memberFig.style.setProperty("background-color", "var(--usa-blue)")
+    } else {
+      memberFig.style.setProperty("background-color", "#333333");
+    }
+
     memberFig.appendChild(memberImg);
     memberFig.appendChild(memberCap);
     congressGrid.appendChild(memberFig);
@@ -55,7 +63,7 @@ function populateInfo(arr, string) {
   removeChildren(info);
 
   const title = document.createElement("h2");
-  title.textContent = `Members of ${string}`;
+  title.textContent = string;
   info.appendChild(title);
 
   let count = document.createElement("p");
@@ -63,7 +71,7 @@ function populateInfo(arr, string) {
   let loyaltyParagraph = document.createElement("p");
   let loyaltyList = document.createElement("ul");
 
-  count.textContent = `There are ${arr.length} members of ${string}.`
+  count.textContent = `There are ${arr.length} ${string}.`
 
   const mostSeniorMember = arr.reduce((acc, member) => {
     return acc.seniority > member.seniority ? acc : member;
@@ -78,9 +86,9 @@ function populateInfo(arr, string) {
     .map((member) => member.name)
     .join(" and ");
 
-  mostSenior.textContent = `The most senior member of ${string} is ${mostSeniorMember.name} and the biggest vacationer is ${biggestVacationerList}.`;
+  mostSenior.textContent = `The most senior member is ${mostSeniorMember.name} and the biggest vacationer is ${biggestVacationerList}.`;
 
-  loyaltyParagraph.textContent = `The members from ${string} who have 100% voting loyalty to their parties are:`
+  loyaltyParagraph.textContent = `The members who have 100% voting loyalty to their parties are:`
 
   arr.forEach((member) => {
     if (member.loyaltyPct === 100) {
@@ -100,8 +108,8 @@ function populateInfo(arr, string) {
 const senatorsButton = document.createElement("button");
 senatorsButton.textContent = "Show All Senators";
 senatorsButton.addEventListener("click", () => {
-  populateGrid(simpleSenators, "the Senate");
-  populateInfo(simpleSenators, "the Senate")
+  populateGrid(simpleSenators);
+  populateInfo(simpleSenators, "Members of the Senate")
 });
 nav.appendChild(senatorsButton);
 
@@ -109,8 +117,8 @@ const womenSButton = document.createElement("button");
 womenSButton.textContent = "Sort Senate by Women";
 womenSButton.addEventListener('click', () => {
   let arr = simpleSenators.filter(senator => senator.gender === 'F');
-  populateGrid(arr, "the women of the Senate");
-  populateInfo(arr, "the women of the Senate");
+  populateGrid(arr);
+  populateInfo(arr, "Women of the Senate");
 })
 nav.appendChild(womenSButton);
 
@@ -118,16 +126,16 @@ const menSButton = document.createElement("button");
 menSButton.textContent = "Sort Senate by Men";
 menSButton.addEventListener('click', () => {
   let arr = simpleSenators.filter(senator => senator.gender === 'M');
-  populateGrid(arr, "the men of the Senate");
-  populateInfo(arr, "the men of the Senate");
+  populateGrid(arr);
+  populateInfo(arr, "Men of the Senate");
 })
 nav.appendChild(menSButton);
 
 const repsButton = document.createElement("button");
 repsButton.textContent = "Show All Representatives";
 repsButton.addEventListener("click", () => {
-  populateGrid(simpleReps, "the House of Representatives");
-  populateInfo(simpleReps, "the House of Representatives");
+  populateGrid(simpleReps);
+  populateInfo(simpleReps, "Members of the House of Representatives");
 });
 nav.appendChild(repsButton);
 
@@ -135,8 +143,8 @@ const womenRButton = document.createElement("button");
 womenRButton.textContent = "Sort House of Reps by Women";
 womenRButton.addEventListener('click', () => {
   let arr = simpleReps.filter(senator => senator.gender === 'F');
-  populateGrid(arr, "the women of the House of Representatives");
-  populateInfo(arr, "the women of the House of Representatives");
+  populateGrid(arr);
+  populateInfo(arr, "Women of the House of Representatives");
 })
 nav.appendChild(womenRButton);
 
@@ -144,18 +152,18 @@ const menRButton = document.createElement("button");
 menRButton.textContent = "Sort House of Reps by Men";
 menRButton.addEventListener('click', () => {
   let arr = simpleReps.filter(senator => senator.gender === 'M');
-  populateGrid(arr, "the men of the House of Representatives");
-  populateInfo(arr, "the men of the House of Representatives");
+  populateGrid(arr);
+  populateInfo(arr, "Men of the House of Representatives");
 })
 nav.appendChild(menRButton);
 
 const allButton = document.createElement("button");
 allButton.textContent = "Show All Congress Members";
 allButton.addEventListener('click', () => {
-  populateGrid(allMembers, "Congress");
-  populateInfo(allMembers, "Congress");
+  populateGrid(allMembers);
+  populateInfo(allMembers, "Members of Congress");
 });
 nav.appendChild(allButton);
 
-populateGrid(allMembers, "Congress");
-populateInfo(allMembers, "Congress");
+populateGrid(allMembers);
+populateInfo(allMembers, "Members of Congress");
