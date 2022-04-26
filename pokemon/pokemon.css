@@ -36,7 +36,7 @@ h1 {
 
 #formBox {
     background-color: var(--pokemon-lblue);
-    height: 8rem;
+    height: 17rem;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -55,6 +55,10 @@ h1 {
     padding: 0.8rem;
     width: 10rem;
     font-size: 1rem;
+}
+
+#formBox option {
+    text-transform: capitalize;
 }
 
 #pokeGrid {
@@ -137,8 +141,9 @@ figure figcaption {
     border-radius: 0 0 10px 10px;
 }
 
-h3 {
+#displayTitle {
     text-align: center;
+    margin-top: 1rem;
 }
 
 #pokeTable {

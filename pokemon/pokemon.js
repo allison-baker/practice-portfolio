@@ -1,3 +1,5 @@
+import { removeChildren } from "../utilities/index.js";
+
 // Select document elements
 const pokeGrid = document.querySelector("#pokeGrid");
 const newPokemon = document.querySelector("#formBox");
@@ -207,46 +209,9 @@ function makeMovesArray(commaString) {
   });
 }
 
-const buttonLabel = document.createElement("h3");
-buttonLabel.textContent = "Add Your Pokemon to the Grid!";
-newPokemon.appendChild(buttonLabel);
-
-const newButton = document.createElement('button');
-newButton.textContent = 'New Pokemon';
-newPokemon.appendChild(newButton);
-
-newButton.addEventListener('click', () => {
-  const pokeName = prompt('What is the name of your new Pokemon?', 'Alemon');
-  const pokeHeight = prompt("What is the Pokemon's height?", 10);
-  const pokeWeight = prompt("What is the Pokemon's weight?", 750);
-  const pokeAbilities = prompt(
-    "What are your Pokemon's abilities? (use a comma-separated list)",
-  );
-  const pokeTypes = prompt(
-    "What are your Pokemon's types? (up to 2 types separated by a space)",
-  );
-  const pokeMoves = prompt(
-    "What are your Pokemon's three favorite moves? (use a comma-separated list)"
-  );
-
-  const newPokemon = new Pokemon(
-    pokeName,
-    pokeHeight,
-    pokeWeight,
-    makeAbilitiesArray(pokeAbilities),
-    makeTypesArray(pokeTypes),
-    makeMovesArray(pokeMoves),
-  );
-
-  console.log(newPokemon);
-  populatePokeCard(newPokemon);
-});
-
-// Load page
-await loadPokemon(0, 28);
-
 function getPokemonByType(type) {
-  return loadedPokemon.filter((pokemon) => pokemon.types[0].type.name === type)
+  console.log(loadedPokemon.filter((pokemon) => pokemon.types[0].type.name === type));
+  return loadedPokemon.filter((pokemon) => pokemon.types[0].type.name === type);
 }
 
 // Table to display stats on pokemon currently in grid
@@ -288,4 +253,74 @@ function createPokeTable() {
   }
 }
 
-createPokeTable();
+const loadButton = document.createElement("button");
+loadButton.textContent = "Load All Pokemon";
+newPokemon.appendChild(loadButton);
+
+loadButton.addEventListener("click", async () => {
+  if (loadedPokemon.length === 0) {
+    removeChildren(pokeGrid);
+    await loadPokemon(0, 100);
+    createPokeTable();
+  }
+})
+
+function createDropDown() {
+  const dropDownLabel = document.createElement("h3");
+  dropDownLabel.textContent = "Sort Pokemon By Type";
+  newPokemon.appendChild(dropDownLabel);
+
+  const dropDown = document.createElement("select");
+  const firstOption = document.createElement("option");
+  firstOption.value = "all";
+  firstOption.textContent = "Show All Pokemon";
+  dropDown.appendChild(firstOption);
+  
+  typeAndColor.forEach((typeItem) => {
+    const option = document.createElement("option");
+    option.value = typeItem.name;
+    option.textContent = typeItem.name;
+    dropDown.appendChild(option);
+  })
+  newPokemon.appendChild(dropDown);
+}
+
+createDropDown();
+
+// Sort Pokemon by type
+
+
+const buttonLabel = document.createElement("h3");
+buttonLabel.textContent = "Add Your Pokemon to the Grid!";
+newPokemon.appendChild(buttonLabel);
+
+const newButton = document.createElement('button');
+newButton.textContent = 'New Pokemon';
+newPokemon.appendChild(newButton);
+
+newButton.addEventListener('click', () => {
+  const pokeName = prompt('What is the name of your new Pokemon?', 'Alemon');
+  const pokeHeight = prompt("What is the Pokemon's height?", 10);
+  const pokeWeight = prompt("What is the Pokemon's weight?", 750);
+  const pokeAbilities = prompt(
+    "What are your Pokemon's abilities? (use a comma-separated list)",
+  );
+  const pokeTypes = prompt(
+    "What are your Pokemon's types? (up to 2 types separated by a space)",
+  );
+  const pokeMoves = prompt(
+    "What are your Pokemon's three favorite moves? (use a comma-separated list)"
+  );
+
+  const newPokemon = new Pokemon(
+    pokeName,
+    pokeHeight,
+    pokeWeight,
+    makeAbilitiesArray(pokeAbilities),
+    makeTypesArray(pokeTypes),
+    makeMovesArray(pokeMoves),
+  );
+
+  console.log(newPokemon);
+  populatePokeCard(newPokemon);
+});
