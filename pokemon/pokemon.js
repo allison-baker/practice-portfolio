@@ -1,8 +1,9 @@
 import { removeChildren } from "../utilities/index.js";
 
 // Select document elements
+const loadAndSort = document.querySelector("#loadAndSort");
+const newPokemon = document.querySelector("#newPokemon");
 const pokeGrid = document.querySelector("#pokeGrid");
-const newPokemon = document.querySelector("#formBox");
 
 // Make API call and get data
 const getAPIData = async (url) => {
@@ -255,7 +256,7 @@ function createPokeTable() {
 
 const loadButton = document.createElement("button");
 loadButton.textContent = "Load All Pokemon";
-newPokemon.appendChild(loadButton);
+loadAndSort.appendChild(loadButton);
 
 loadButton.addEventListener("click", async () => {
   if (loadedPokemon.length === 0) {
@@ -266,11 +267,7 @@ loadButton.addEventListener("click", async () => {
 })
 
 function createDropDown() {
-  const dropDownLabel = document.createElement("h3");
-  dropDownLabel.textContent = "Sort Pokemon By Type";
-  newPokemon.appendChild(dropDownLabel);
-
-  const dropDown = document.createElement("select");
+  const dropDown = document.querySelector("#pokeSort");
   const firstOption = document.createElement("option");
   firstOption.value = "all";
   firstOption.textContent = "Show All Pokemon";
@@ -282,13 +279,27 @@ function createDropDown() {
     option.textContent = typeItem.name;
     dropDown.appendChild(option);
   })
-  newPokemon.appendChild(dropDown);
 }
 
 createDropDown();
 
 // Sort Pokemon by type
-
+const typeList = document.querySelector("#pokeSort");
+typeList.addEventListener("change", (event) => {
+  removeChildren(pokeGrid);
+  const userChoice = event.target.value.toLowerCase();
+  if (event.target.value === 'all') {
+    loadedPokemon.forEach((singleLoadedPokemon) =>
+      populatePokeCard(singleLoadedPokemon),
+    )
+  } else {
+    const pokemonByType = getPokemonByType(userChoice)
+    // now just loop through the filtered array and populate
+    pokemonByType.forEach((eachSinglePokemon) =>
+      populatePokeCard(eachSinglePokemon),
+    )
+  }
+});
 
 const buttonLabel = document.createElement("h3");
 buttonLabel.textContent = "Add Your Pokemon to the Grid!";

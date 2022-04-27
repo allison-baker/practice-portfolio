@@ -34,31 +34,31 @@ h1 {
     padding-bottom: 1rem;
 }
 
-#formBox {
+#loadAndSort option {
+    text-transform: capitalize;
+}
+
+#loadAndSort, #newPokemon {
     background-color: var(--pokemon-lblue);
-    height: 17rem;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
     align-items: center;
+    justify-content: center;
 }
 
-#formBox h3 {
+#loadAndSort label, #newPokemon h3 {
     color: white;
+    padding: 1.5rem;
 }
 
-#formBox button {
+button {
     border: none;
     background-color: var(--pokemon-dblue);
     color: white;
     font-family: 'Roboto Condensed', sans-serif;
     padding: 0.8rem;
+    margin: 1.5rem;
     width: 10rem;
     font-size: 1rem;
-}
-
-#formBox option {
-    text-transform: capitalize;
 }
 
 #pokeGrid {
