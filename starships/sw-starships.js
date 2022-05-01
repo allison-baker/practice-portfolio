@@ -32,8 +32,16 @@ function populateShipView(shipData) {
     const shipCap = document.createElement('figcaption');
     const shipNum = getLastNum(shipData.url);
     const shipImg = document.createElement('img');
+    const shipModel = document.createElement('p');
+    const shipMan = document.createElement('p');
+    const shipClass = document.createElement('p');
 
-    shipCap.textContent = shipData.model;
+    shipModel.textContent = `Model: ${shipData.model}`;
+    shipMan.textContent = `Manufacturer: ${shipData.manufacturer}`;
+    shipClass.textContent = `Starship Class: ${shipData.starship_class}`;
+    shipCap.appendChild(shipModel);
+    shipCap.appendChild(shipMan);
+    shipCap.appendChild(shipClass);
     shipImg.src = `https://starwars-visualguide.com/assets/img/starships/${shipNum}.jpg`;
 
     shipImg.addEventListener('error', () => {
