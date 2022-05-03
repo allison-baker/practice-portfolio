@@ -34,6 +34,10 @@ h1 {
     padding-bottom: 1rem;
 }
 
+main {
+    min-height: 75vh;
+}
+
 #loadAndSort option {
     text-transform: capitalize;
 }
@@ -144,6 +148,11 @@ figure figcaption {
 #displayTitle {
     text-align: center;
     margin-top: 1rem;
+}
+
+#startMessage {
+    text-align: center;
+    padding: 1rem;
 }
 
 #pokeTable {

@@ -4,6 +4,7 @@ import { removeChildren } from "../utilities/index.js";
 const loadAndSort = document.querySelector("#loadAndSort");
 const newPokemon = document.querySelector("#newPokemon");
 const pokeGrid = document.querySelector("#pokeGrid");
+const start = document.querySelector("#startMessage");
 
 // Make API call and get data
 const getAPIData = async (url) => {
@@ -37,6 +38,8 @@ async function loadPokemon(offset = 0, limit = 25) {
 
 // Create Pokemon cards
 function populatePokeCard(pokemon) {
+  start.innerHTML = "";
+  
   const pokeScene = document.createElement("div");
   pokeScene.className = "scene";
   const pokeCard = document.createElement("div");
