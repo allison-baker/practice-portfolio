@@ -51,6 +51,10 @@ body {
     text-decoration: none;
 }
 
+#navList a:hover {
+    color: var(--light-brown);
+}
+
 #shipViewer {
     margin: 0 auto !important;
 }
