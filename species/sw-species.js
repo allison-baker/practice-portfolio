@@ -2,7 +2,7 @@ import { species } from "../data/species.js";
 import { getLastNum, removeChildren } from "../utilities/index.js";
 
 const header = document.querySelector("#header");
-const main = document.querySelector("#main");
+const main = document.querySelector("#speciesGrid");
 const nav = document.querySelector("#nav");
 const title = document.createElement("h1");
 

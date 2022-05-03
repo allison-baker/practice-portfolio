@@ -30,6 +30,10 @@ nav {
 }
 
 main {
+    min-height: 75vh;
+}
+
+#speciesGrid {
     display: flex;
     flex-wrap: wrap;
     width: 90vw;
