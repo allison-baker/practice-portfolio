@@ -1,5 +1,2 @@
 # Practice Portfolio Project #
-
-## Welcome to my portfolio project! ##
-
-This is where I'm building my practice portfolio for my DGM 1600 class.
+Assignments for my Digital Media 1600 Scripting for Internet Technologies class at Utah Valley University.
